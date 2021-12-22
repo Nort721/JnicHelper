@@ -33,4 +33,4 @@ arguments:
 ```-mangle``` or ```-m``` - to set the mangle option in the generated config to true
 ```-stringobf``` or ```-s``` - to set the stringobf option in the generated config to true
 recommended settings:
-```java -jar JnicHelper.jer ```
+```java -jar JnicHelper.jer -s ```
