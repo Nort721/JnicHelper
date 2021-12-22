@@ -18,7 +18,7 @@ public class JnicHelper {
     public static void main(String[] args) throws Exception {
 
         System.out.println("=+=+= JnicHelper =+=+=" +
-                "\nversion: 1.0" +
+                "\nversion: 0.1" +
                 "\nsource-code: https://github.com/Nort721/JnicHelper.git");
 
         File jar = new File(args[0]);

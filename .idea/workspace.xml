@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1ee5a86-340f-4c4c-a318-0666430b6419" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nort721/jnichelper/JnicHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nort721/jnichelper/JnicHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nort721/jnichelper/utils/AsmUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nort721/jnichelper/utils/AsmUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nort721/jnichelper/utils/jnic.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
