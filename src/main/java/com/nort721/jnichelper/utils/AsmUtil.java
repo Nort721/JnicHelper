@@ -19,16 +19,7 @@ import java.util.jar.JarFile;
 @UtilityClass
 public class AsmUtil {
 
-    public List<MethodNode> getMethodsAnnotated(List<ClassNode> classes, String annotation) {
-        List<MethodNode> methods = new ArrayList<>();
-        for (ClassNode clazz : classes)
-            for (MethodNode method : clazz.methods)
-                if (method.desc.contains(annotation))
-                    methods.add(method);
-        return methods;
-    }
-
-    public List<MethodNode> getMethodsAnnotated(ClassNode clazz, String annotation) {
+    public static List<MethodNode> getMethodsAnnotated(ClassNode clazz, String annotation) {
         List<MethodNode> methods = new ArrayList<>();
         for (MethodNode method : clazz.methods) {
             if (method.visibleAnnotations == null) continue;
@@ -39,7 +30,7 @@ public class AsmUtil {
         return methods;
     }
 
-    public List<ClassNode> loadJar(File file) {
+    public static List<ClassNode> loadJar(File file) {
         List<ClassNode> classes = new ArrayList<>();
         try (JarFile jarFile = new JarFile(file)) {
             Enumeration<JarEntry> entries = jarFile.entries();

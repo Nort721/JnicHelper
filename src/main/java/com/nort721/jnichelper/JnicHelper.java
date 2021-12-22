@@ -2,6 +2,7 @@ package com.nort721.jnichelper;
 
 import com.nort721.jnichelper.utils.AsmUtil;
 import com.nort721.jnichelper.utils.Target;
+import org.apache.commons.io.FilenameUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
@@ -18,41 +19,9 @@ public class JnicHelper {
 
         System.out.println("=+=+= JnicHelper =+=+=" +
                 "\nversion: 1.0" +
-                "\nwebsite: github link here");
+                "\nsource-code: https://github.com/Nort721/JnicHelper.git");
 
-
-        System.out.print("input jar path -> ");
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        String jarPath = reader.readLine();
-
-
-
-        System.out.print("jnic config setting -> mangle (true/false/recommended) -> ");
-
-        String mangleInput = reader.readLine();
-
-        boolean mangle;
-
-        if (mangleInput.equalsIgnoreCase("recommended"))
-            mangle = false;
-        else mangle = Boolean.parseBoolean(mangleInput);
-
-
-
-        System.out.print("jnic config setting -> stringObf (true/false/recommended) -> ");
-
-        String stringObfInput = reader.readLine();
-
-        boolean stringObf;
-
-        if (stringObfInput.equalsIgnoreCase("recommended"))
-            stringObf = true;
-        else stringObf = Boolean.parseBoolean(stringObfInput);
-
-
-        File jar = new File(jarPath);
+        File jar = new File(args[0]);
 
         List<ClassNode> classes = AsmUtil.loadJar(jar);
 
@@ -67,10 +36,33 @@ public class JnicHelper {
             }
         }
 
-        generateJnicConfig(targetedMethods, mangle, stringObf);
+        boolean mangle = false, stringObf = false;
+
+        if (args.length == 2) {
+            if (args[1].equalsIgnoreCase("-m")
+                    || args[1].equalsIgnoreCase("-mangle")) {
+                mangle = true;
+            } else if (args[1].equalsIgnoreCase("-s")
+                    || args[1].equalsIgnoreCase("-stringobf")) {
+                stringObf = true;
+            }
+        } else if (args.length == 3) {
+            if (args[1].equalsIgnoreCase("-m")
+                    || args[1].equalsIgnoreCase("-mangle")) {
+                mangle = true;
+            }
+            if (args[2].equalsIgnoreCase("-s")
+                    || args[2].equalsIgnoreCase("-stringobf")) {
+                stringObf = true;
+            }
+        }
+
+        generateJnicConfig(targetedMethods, mangle, stringObf, "/" + FilenameUtils.getPath(jar.getPath()));
+
+        System.out.println("Done!");
     }
 
-    public static void generateJnicConfig(List<Target> annotatedMethods, boolean mangle, boolean stringObf) throws IOException {
+    public static void generateJnicConfig(List<Target> annotatedMethods, boolean mangle, boolean stringObf, String dest) throws IOException {
 
         Element root = new Element("jnic");
         Document doc = new Document();
@@ -104,7 +96,7 @@ public class JnicHelper {
         //Create the XML
         XMLOutputter outter=new XMLOutputter();
         outter.setFormat(Format.getPrettyFormat());
-        outter.output(doc, new FileWriter(new File("/Users/nort/Desktop/config.xml")));
+        outter.output(doc, new FileWriter(new File(dest + "/config.xml")));
 
     }
 
