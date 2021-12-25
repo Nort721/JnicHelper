@@ -34,5 +34,5 @@ arguments:
 ```-stringobf``` or ```-s``` - to set the stringobf option in the generated config to true
 recommended settings:
 ```java -jar JnicHelper.jar -s ```
-After running the command JnicHelper wilp generate a config.xml file
+After running the command JnicHelper will generate a config.xml file
 that will protect all the methods that are annotated with the @jnic annotation
