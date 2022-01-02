@@ -19,6 +19,13 @@ import java.util.jar.JarFile;
 @UtilityClass
 public class AsmUtil {
 
+    /**
+     * Loops through all the methods in the class and returns all the methods
+     * that are annotated with the specified annotation
+     * @param clazz The class that we are scanning
+     * @param annotation The name of the target annotation
+     * @return A list of all the methodNodes that are annotated with the specified annotation
+     */
     public static List<MethodNode> getMethodsAnnotated(ClassNode clazz, String annotation) {
         List<MethodNode> methods = new ArrayList<>();
         for (MethodNode method : clazz.methods) {
@@ -30,6 +37,12 @@ public class AsmUtil {
         return methods;
     }
 
+    /**
+     * loops through all the entries in a file and returns all the compiled
+     * classes in that file
+     * @param file The file that we are scanning
+     * @return A list of all the classNodes in that file
+     */
     public static List<ClassNode> loadJar(File file) {
         List<ClassNode> classes = new ArrayList<>();
         try (JarFile jarFile = new JarFile(file)) {

@@ -18,7 +18,7 @@ public class JnicHelper {
     public static void main(String[] args) throws Exception {
 
         System.out.println("=+=+= JnicHelper =+=+=" +
-                "\nversion: 0.1" +
+                "\nversion: 0.2" +
                 "\nsource-code: https://github.com/Nort721/JnicHelper.git");
 
         File jar = new File(args[0]);
@@ -36,33 +36,29 @@ public class JnicHelper {
             }
         }
 
-        boolean mangle = false, stringObf = false;
+        boolean mangle = false;
+        boolean stringObf = false;
+        boolean methodDesc = false;
 
-        if (args.length == 2) {
-            if (args[1].equalsIgnoreCase("-m")
-                    || args[1].equalsIgnoreCase("-mangle")) {
+        for (String arg : args) {
+            if (arg.equalsIgnoreCase("-m")
+                    || arg.equalsIgnoreCase("-mangle")) {
                 mangle = true;
-            } else if (args[1].equalsIgnoreCase("-s")
-                    || args[1].equalsIgnoreCase("-stringobf")) {
+            } else if (arg.equalsIgnoreCase("-s")
+                    || arg.equalsIgnoreCase("-stringobf")) {
                 stringObf = true;
-            }
-        } else if (args.length == 3) {
-            if (args[1].equalsIgnoreCase("-m")
-                    || args[1].equalsIgnoreCase("-mangle")) {
-                mangle = true;
-            }
-            if (args[2].equalsIgnoreCase("-s")
-                    || args[2].equalsIgnoreCase("-stringobf")) {
-                stringObf = true;
+            } else if (arg.equalsIgnoreCase("-desc")
+                    || arg.equalsIgnoreCase("-d")) {
+                methodDesc = true;
             }
         }
 
-        generateJnicConfig(targetedMethods, mangle, stringObf, "/" + FilenameUtils.getPath(jar.getPath()));
+        generateJnicConfig(targetedMethods, mangle, stringObf, methodDesc, "/" + FilenameUtils.getPath(jar.getPath()));
 
         System.out.println("Done!");
     }
 
-    public static void generateJnicConfig(List<Target> annotatedMethods, boolean mangle, boolean stringObf, String dest) throws IOException {
+    public static void generateJnicConfig(List<Target> annotatedMethods, boolean mangle, boolean stringObf, boolean desc, String dest) throws IOException {
 
         Element root = new Element("jnic");
         Document doc = new Document();
@@ -80,8 +76,12 @@ public class JnicHelper {
             String methodName = target.getMethodName();
             String methodDesc = target.getMethodDesc();
 
-            child3.addContent(new Element("match").setAttribute("className", className)
-                    .setAttribute("methodName", methodName).setAttribute("methodDesc", methodDesc));
+            if (desc)
+                child3.addContent(new Element("match").setAttribute("className", className)
+                        .setAttribute("methodName", methodName).setAttribute("methodDesc", methodDesc));
+            else
+                child3.addContent(new Element("match").setAttribute("className", className)
+                        .setAttribute("methodName", methodName));
         }
 
         Element child4 = new Element("exclude");
