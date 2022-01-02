@@ -27,12 +27,15 @@ in your project with the @jnic annotation, like so:
 
 ## Running JnicHelper
 When you want to protect your jar, download the latest release of JnicHelper from the releases tab
-and run it with the
-```java -jar JnicHelper.jar myJar.jar"```
-arguments:
-```-mangle``` or ```-m``` - to set the mangle option in the generated config to true
-```-stringobf``` or ```-s``` - to set the stringobf option in the generated config to true
-recommended settings:
-```java -jar JnicHelper.jar -s ```
+and run it with the command  
+```java -jar JnicHelper.jar myJar.jar"```  
+  
+arguments:  
+```-mangle``` or ```-m``` - to set the mangle option in the generated config to true  
+```-stringobf``` or ```-s``` - to set the stringobf option in the generated config to true  
+```-desc``` or ```-d``` - to make jnic also generate the methods description  
+  
+recommended settings:  
+```java -jar JnicHelper.jar -s ```  
 After running the command JnicHelper will generate a config.xml file
 that will protect all the methods that are annotated with the @jnic annotation
