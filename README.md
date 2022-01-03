@@ -40,4 +40,4 @@ recommended settings:
 After running the command JnicHelper will generate a config.xml file
 that will protect all the methods that are annotated with the @jnic annotation
 
-### Note: if you use another java obfuscator before obfuscating with jnic make sure to exclude the @jnic annotaion class from being renamed
+### Note: if you use another java obfuscator before obfuscating with jnic make sure to exclude the @jnic interface from being name obfuscated
