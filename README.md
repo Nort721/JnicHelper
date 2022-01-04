@@ -36,7 +36,7 @@ arguments:
 ```-desc``` or ```-d``` - to make jnic also generate the methods description  
   
 recommended settings:  
-```java -jar JnicHelper.jar -s ```  
+```java -jar JnicHelper.jar MyJar.jar -s ```  
 After running the command JnicHelper will generate a config.xml file
 that will protect all the methods that are annotated with the @jnic annotation
 
