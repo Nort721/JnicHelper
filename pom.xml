@@ -6,7 +6,7 @@
 
     <groupId>com.nort721</groupId>
     <artifactId>jnichelper</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
 
     <properties>
         <maven.compiler.source>14</maven.compiler.source>
