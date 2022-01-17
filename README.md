@@ -28,7 +28,10 @@ in your project with the @jnic annotation, like so:
 ## Running JnicHelper
 When you want to protect your jar, download the latest release of JnicHelper from the releases tab
 and run it with the command  
-```java -jar JnicHelper.jar myJar.jar"```  
+```java -jar JnicHelper.jar myJar.jar"```
+
+you also can specify output folder path
+```java -jar JnicHelper.jar myJar.jar OutputFolderPath"```  
   
 arguments:  
 ```-mangle``` or ```-m``` - to set the mangle option in the generated config to true  
