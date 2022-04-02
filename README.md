@@ -44,3 +44,8 @@ After running the command JnicHelper will generate a config.xml file
 that will protect all the methods that are annotated with the @jnic annotation
 
 ### Note: if you use another java obfuscator before obfuscating with jnic make sure to exclude the @jnic interface from being name obfuscated
+
+## Annotation removal
+If you want to remove the jnic annotation from the methods
+for one reason or another checkout bruhisalex's tool built
+directly for that: https://github.com/bruhitsalex/JarAnnotationRemover
