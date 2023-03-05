@@ -4,7 +4,6 @@ An annotation based config generator for the jnic java obfuscator
 JNIC: https://jnic.dev/
 
 # Usage
-
 In the project that you plan on protecting with jnic
 implement the following interface
 ```java
@@ -44,6 +43,7 @@ After running the command JnicHelper will generate a config.xml file
 that will protect all the methods that are annotated with the @jnic annotation
 
 ### Note: if you use another java obfuscator before obfuscating with jnic make sure to exclude the @jnic interface from being name obfuscated
+#### Note: We did it! JNIC has implemented this annotations feature in version 3.5.0 so if you are on 3.5.0 or above there is no need to use jnichelper however we still keep this project up for anyone who is still on older versions
 
 ## Annotation removal
 If you want to remove the jnic annotation from the methods
